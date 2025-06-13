@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics in Psychology MPC006 - Comprehensive Formulas</title>
+  <!-- Google Fonts for Merriweather and Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind CSS Configuration - Preserved from new 1.txt
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            // Merriweather for headings, Lato for body text
+            serif: ['Merriweather', 'serif'],
+            sans: ['Lato', 'sans-serif'],
+          },
+          colors: {
+            // New sophisticated and muted color palette
+            primary: '#5C6AC4', // A deep, calming blue
+            secondary: '#7986CB', // A lighter shade of the primary blue
+            accent: '#B0BEC5', // A soft, cool gray for subtle accents
+            background: '#ECEFF1', // Very light gray background
+            darkBackground: '#263238', // Deep charcoal for dark mode background
+            textLight: '#37474F', // Dark slate gray for light mode text
+            textDark: '#CFD8DC', // Light gray for dark mode text
+            cardLight: '#FFFFFF', // Pristine white for cards in light mode
+            cardDark: '#37474F', // Dark slate gray for cards in dark mode
+          },
+          animation: {
+            // Refined animations for a smoother feel
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+            'slide-in-left': 'slideInLeft 0.5s ease-out forwards',
+            'pulse-subtle': 'pulseSubtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.01)' }, // Very slight pulse
+            },
+          },
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom scrollbar - colors updated for the new palette */
+    ::-webkit-scrollbar { width: 0.6rem; }
+    ::-webkit-scrollbar-track { background: var(--background); }
+    html.dark ::-webkit-scrollbar-track { background: var(--darkBackground); }
+    ::-webkit-scrollbar-thumb { background: #90A4AE; border-radius: 0.3rem; }
+    ::-webkit-scrollbar-thumb:hover { background: #78909C; }
+
+    /* Custom classes for enhanced UI/UX, completely reimagined */
+    .focus-ring-subtle:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(92, 106, 196, 0.3); /* Primary blue with transparency */
+    }
+    .card-elevate {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+    .card-elevate:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .text-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+    }
+    .button-modern {
+      transition: all 0.2s ease-in-out;
+      background-color: var(--primary);
+      color: var(--cardLight); /* White text on buttons */
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem; /* Rounded corners */
+      font-weight: 600;
+    }
+    .button-modern:hover {
+      background-color: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    /* CSS variable definitions for dynamic colors */
+    :root {
+      --primary: #5C6AC4;
+      --secondary: #7986CB;
+      --accent: #B0BEC5;
+      --background: #ECEFF1;
+      --darkBackground: #263238;
+      --textLight: #37474F;
+      --textDark: #CFD8DC;
+      --cardLight: #FFFFFF;
+      --cardDark: #37474F;
+    }
+
+    /* Apply variables based on theme */
+    body {
+      background-color: var(--background);
+      color: var(--textLight);
+      font-family: 'Lato', sans-serif; /* Lato as default body font */
+    }
+    html.dark body {
+      background-color: var(--darkBackground);
+      color: var(--textDark);
+    }
+    .bg-white { background-color: var(--cardLight); }
+    html.dark .bg-white { background-color: var(--cardDark); }
+    .dark\:bg-gray-900 { background-color: var(--cardDark); } /* Specific override for dark mode */
+
+    /* Apply Merriweather Display to headings */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Merriweather', serif;
+    }
+
+    /* Custom styles for MathJax elements to ensure proper rendering */
+    /* Make sure MathJax output is always treated as blocks for proper layout */
+    .math-display .mjx-chtml {
+        display: block !important;
+        overflow-x: auto; /* Allow horizontal scroll for long formulas */
+        padding: 0.5rem; /* Add padding to the MathJax output itself */
+        text-align: center;
+    }
+    /* Style for inline math elements processed by MathJax */
+    .math-inline .mjx-chtml {
+        display: inline-block !important;
+    }
+
+    /* Specific classes for color-coding cards with custom gradients */
+    .ungrouped-card-bg {
+        background-image: linear-gradient(to bottom right, #f3e8ff, #fbcfe8); /* Light purple to light pink */
+    }
+    .grouped-card-bg {
+        background-image: linear-gradient(to bottom right, #e0f2f7, #ecfccb); /* Light teal to light lime */
+    }
+    .default-card-bg {
+        background-image: linear-gradient(to bottom right, #ffffff, #f0f9ff); /* White to very light blue */
+    }
+
+    /* Styling for the floating tooltip */
+    .tooltip-floater {
+        position: absolute;
+        z-index: 50; /* Above other content */
+        width: 18rem; /* Fixed width for readability */
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background-color: #ecfdf5; /* Light emerald for tooltip */
+        border: 1px solid #a7f3d0; /* Emerald border */
+        opacity: 0; /* Start hidden for transition */
+        visibility: hidden; /* Start hidden for transition */
+        transform: translateY(0.5rem); /* Small gap, initially hidden */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s; /* Transition for fade and slide */
+    }
+    .tooltip-floater.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Faster transition when showing */
+    }
+
+    /* Responsive adjustments for tooltip */
+    @media (min-width: 768px) { /* md breakpoint */
+        .tooltip-floater {
+            left: 100%; /* To the right of the parent li */
+            top: 0;
+            transform: translateX(1rem); /* Small gap from parent, initially hidden */
+        }
+        .tooltip-floater.show {
+            transform: translateX(0); /* Move into view */
+        }
+    }
+
+    /* Smooth transition for card expansion */
+    .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out; /* Smooth transition for expansion */
+        opacity: 0; /* Start hidden for fade */
+        transition: max-height 0.5s ease-out, opacity 0.3s ease-in;
+        border-top: 1px solid transparent; /* To manage border transition */
+        padding-top: 0;
+    }
+    .collapsible-content.expanded {
+        max-height: 1000px; /* Large enough value to contain content */
+        opacity: 1;
+        border-color: #e5e7eb; /* Gray-200 for border */
+        padding-top: 1rem; /* pt-4 */
+    }
+
+    /* Styles for dynamic card sizing and z-index when one is expanded */
+    .card-wrapper {
+        transition: all 0.5s ease-in-out; /* Smooth transitions for sizing and opacity */
+        flex-shrink: 0; /* Prevent cards from shrinking too much when siblings are present */
+        border: 2px solid transparent; /* Default transparent border for transition */
+    }
+    .card-wrapper.expanded-active {
+        flex-basis: 100% !important; /* Force full width within its flex container */
+        flex-grow: 1; /* Allow it to take available space */
+        z-index: 10; /* Bring to front */
+        transform: scale(1.02); /* Slightly grow */
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* More prominent shadow */
+        border-color: var(--primary); /* Highlight border using primary color */
+    }
+    .card-wrapper.expanded-sibling {
+        flex-basis: 0 !important; /* Shrink to minimal size, override md:w-1/2 */
+        flex-grow: 0;
+        opacity: 0; /* Fade out */
+        pointer-events: none; /* Disable clicks on sibling */
+        overflow: hidden; /* Hide content */
+        margin: 0 !important; /* Remove margin from sibling */
+        padding: 0 !important; /* Remove padding from sibling */
+        height: 0; /* Collapse height to hide content */
+    }
+    /* Restore height for side-by-side cards when not expanded or sibling */
+    .card-wrapper:not(.expanded-active):not(.expanded-sibling) {
+        height: auto;
+    }
+
+
+    /* Ensure the pairRow always takes full width and manages its children */
+    .pair-row-container {
+        display: flex;
+        flex-direction: column; /* Stack on mobile */
+        gap: 1.5rem; /* gap-6 */
+        width: 100%;
+    }
+    @media (min-width: 768px) { /* md breakpoint */
+        .pair-row-container {
+            flex-direction: row; /* Side-by-side on desktop */
+        }
+    }
+    /* Ensure card-wrapper takes half width in non-expanded row for md+ */
+    .pair-row-container:not(.expanded-row) > .card-wrapper {
+         width: 100%; /* Default for mobile */
+    }
+    @media (min-width: 768px) {
+        .pair-row-container:not(.expanded-row) > .card-wrapper {
+            width: calc(50% - 0.75rem); /* Half width minus half the gap */
+        }
+    }
+    /* When a row has an expanded card, force it to be a column to make expanded-active work */
+    .pair-row-container.expanded-row {
+        flex-direction: column;
+    }
+
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 dark:from-darkBackground dark:via-darkBackground dark:to-darkBackground min-h-screen p-8 font-sans text-textLight dark:text-textDark antialiased">
+
+  <div class="mx-auto max-w-4xl">
+    <!-- Header - Preserved from new 1.txt -->
+    <header class="flex items-center justify-between mb-8">
+      <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+        MPC-004 Advanced Social Psychology
+      </h1>
+      <button id="themeToggle" aria-label="Toggle dark mode"
+        class="p-3 rounded-xl bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary transition">
+        🌓
+      </button>
+    </header>
+
+    <!-- Main Content Area (Formulas will be dynamically loaded here) -->
+    <main>
+      <div class="max-w-7xl mx-auto py-8">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center text-blue-800 mb-12 drop-shadow-sm">
+            📚 Comprehensive Statistical Formulas Cheat Sheet
+        </h1>
+
+        <!-- How to Use Section -->
+        <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
+            <details>
+                <summary class="text-xl font-bold text-gray-700 cursor-pointer">
+                    💡 How to Use This Cheat Sheet
+                </summary>
+                <div class="mt-4 text-gray-600 space-y-3 prose prose-sm max-w-none">
+                    <p>This interactive cheat sheet helps you understand key statistical formulas. Here's how to use it:</p>
+                    <ul class="list-disc pl-5">
+                        <li><strong>Expand Cards</strong>: Click on any formula card's title or description to expand it and reveal its full details, including its definition, formula, and variables. Click again to collapse.</li>
+                        <li><strong>Understand Variables</strong>: Inside an expanded card, each variable is defined. If a variable name is <span class="text-blue-600 font-bold">highlighted and underlined</span>, click it to see a detailed sub-formula or logical explanation in a floating tooltip.</li>
+                        <li><strong>Side-by-Side Comparison</strong>: For "Measures of Central Tendency & Dispersion," you'll find formulas for ungrouped and grouped data presented side-by-side for easy comparison, identified by their different card colors. When one is clicked, it expands to fill the row, and the other hides.</li>
+                        <li><strong>MathJax Formulas</strong>: All mathematical formulas are rendered using MathJax for clear and beautiful display.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <div id="formulas-container">
+            <!-- Formulas will be dynamically loaded here by JavaScript -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer - Preserved from new 1.txt -->
+    <footer class="mt-16 text-center text-sm text-textLight dark:text-textDark animate-fade-in delay-500">
+      &copy; 2025 Statistics-n-Psychology Hub. All rights reserved. Made with ❤️ by Usaid, for IGNOU learners.
+    </footer>
+  </div>
+
+  <!-- MathJax Script - Moved to body end for optimal loading -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <script>
+    // Theme Toggle - Preserved from new 1.txt
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Set initial theme based on localStorage or system preference
+    if (localStorage.theme === 'dark' || (!localStorage.theme && prefersDark.matches)) {
+      root.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    // Listen for system theme changes
+    prefersDark.addEventListener('change', (event) => {
+      if (!localStorage.theme) { // Only update if user hasn't explicitly set a preference
+        if (event.matches) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
+    });
+
+    // Copy to clipboard with enhanced toast - Preserved from new 1.txt
+    function copyToClipboard(text, event) {
+      event.preventDefault();
+      // Using execCommand for wider compatibility in iframe environments
+      const tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        const toast = document.createElement('div');
+        toast.innerText = 'Copied to clipboard!';
+        toast.className = 'fixed bottom-6 right-6 bg-primary text-white px-5 py-3 rounded-full shadow-lg animate-fade-in font-sans font-semibold z-50';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.remove('animate-fade-in');
+          toast.classList.add('opacity-0'); // Simple fade out
+        }, 1500);
+        setTimeout(() => toast.remove(), 2000); // Remove after fade out
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+        const errorToast = document.createElement('div');
+        errorToast.innerText = 'Copy failed!';
+        errorToast.className = 'fixed bottom-6 right-6 bg-red-600 text-white px-5 py-3 rounded-full shadow-lg animate-fade-in font-sans font-semibold z-50';
+        document.body.appendChild(errorToast);
+        setTimeout(() => {
+          errorToast.classList.remove('animate-fade-in');
+          errorToast.classList.add('opacity-0'); // Simple fade out
+        }, 1500);
+        setTimeout(() => errorToast.remove(), 2000); // Remove after fade out
+      } finally {
+        document.body.removeChild(tempInput);
+      }
+    }
+
+    // Debounced search filter with improved matching - Preserved from new 1.txt
+    let searchTimer;
+    const searchInput = document.getElementById('searchInput');
+    // searchInput might not exist on this page, add a check
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(() => {
+            const query = searchInput.value.toLowerCase().trim();
+            document.querySelectorAll('section').forEach(section => { // Target sections as main content containers
+              const sectionTitle = section.querySelector('h2')?.textContent.toLowerCase() || '';
+              let sectionMatch = sectionTitle.includes(query);
+
+              let anyCardMatches = false;
+              section.querySelectorAll('.card-wrapper').forEach(cardWrapper => { // Iterate through my dynamic cards
+                const cardTitle = cardWrapper.querySelector('h3')?.textContent.toLowerCase() || '';
+                const cardDefinition = cardWrapper.querySelector('p')?.textContent.toLowerCase() || '';
+                const fullCardText = cardTitle + ' ' + cardDefinition; // Simple search for now
+
+                if (query === '' || fullCardText.includes(query)) {
+                  cardWrapper.style.display = ''; // Show
+                  anyCardMatches = true;
+                } else {
+                  cardWrapper.style.display = 'none'; // Hide
+                }
+              });
+
+              // If no cards within a section match, and the section title itself doesn't match, hide the section
+              if (!anyCardMatches && !sectionMatch && query !== '') {
+                section.style.display = 'none';
+              } else {
+                section.style.display = '';
+              }
+            });
+          }, 300); // 300ms debounce
+        });
+    }
+
+    // Quick Navigation/Tag Filters - Preserved from new 1.txt (adjusted to work with non-existent tags for now)
+    document.querySelectorAll('.tag-filter').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const filterTerm = event.target.dataset.filter.toLowerCase();
+          if (searchInput) { // Only attempt if searchInput exists
+            searchInput.value = filterTerm; // Populate search input
+            searchInput.dispatchEvent(new Event('input')); // Trigger search event
+          }
+        });
+    });
+
+
+    // MathJax configuration (important for LaTeX rendering) - Preserved
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']], // Define inline math delimiters
+            displayMath: [['$$', '$$'], ['\\[', '\\]']] // Define display math delimiters
+        },
+        svg: {
+            fontCache: 'global'
+        },
+        startup: {
+            typeset: false // Disable initial automatic typesetting. We will control it manually.
+        }
+    };
+
+    // --- Data for all statistical formulas --- (COMPLETE DATASET)
+    const formulasData = [
+        {
+            category: 'Measures of Central Tendency & Dispersion',
+            icon: '📊',
+            description: 'These formulas help summarize the central value and spread of data points within a single variable.',
+            type: 'side-by-side',
+            items: [
+                {
+                    pairName: 'Mean',
+                    ungrouped: {
+                        id: 'mean-ungrouped',
+                        name: 'Mean (Ungrouped Data)',
+                        formula: '$$\\bar{x} = \\frac{\\sum x_i}{n}$$',
+                        definition: 'Measures central tendency by averaging all individual values.',
+                        variables: [
+                            { name: '$\\sum x_i$', definition: 'Sum of all individual observations.' },
+                            { name: '$n$', definition: 'Total number of observations.' },
+                        ],
+                    },
+                    grouped: {
+                        id: 'mean-grouped',
+                        name: 'Mean (Grouped Data)',
+                        formula: '$$\\bar{x} = \\frac{\\sum f_i m_i}{\\sum f_i}$$',
+                        definition: 'Measures central tendency for data organized into frequency distributions.',
+                        variables: [
+                            { name: '$f_i$', definition: 'Frequency of each class interval.' },
+                            {
+                                name: '$m_i$',
+                                definition: 'Midpoint of each class interval.',
+                                subFormula: {
+                                    formula: '$$m_i = \\frac{\\text{Upper limit} + \\text{Lower limit}}{2}$$',
+                                    variables: [
+                                        { name: 'Upper limit', definition: 'Upper boundary of the class interval.' },
+                                        { name: 'Lower limit', definition: 'Lower boundary of the class interval.' },
+                                    ],
+                                },
+                            },
+                            { name: '$\\sum f_i$', definition: 'Total frequency (total number of observations).' },
+                        ],
+                    },
+                },
+                {
+                    pairName: 'Median',
+                    ungrouped: {
+                        id: 'median-ungrouped',
+                        name: 'Median (Ungrouped Data)',
+                        formula: null,
+                        definition: 'The middle value in an ordered dataset.',
+                        logic: `
+                        1. Arrange data in ascending order.
+                        2. If $n$ is odd, Median = middle value ($\\frac{n+1}{2}$-th observation).
+                        3. If $n$ is even, Median = average of the two middle values ($\\frac{n}{2}$-th and $(\\frac{n}{2} + 1)$-th observations).
+                        `,
+                        variables: [
+                            { name: '$n$', definition: 'Total number of observations.' },
+                        ],
+                    },
+                    grouped: {
+                        id: 'median-grouped',
+                        name: 'Median (Grouped Data)',
+                        formula: '$$\\text{Median} = L + \\frac{(N/2 - F)}{f_m} \\times h$$',
+                        definition: 'Represents the middle value for data organized into frequency distributions.',
+                        variables: [
+                            { name: '$L$', definition: 'Lower limit of the median class (the class containing the median).' },
+                            { name: '$N$', definition: 'Total frequency of the dataset.' },
+                            { name: '$F$', definition: 'Cumulative frequency of the class *preceding* the median class.' },
+                            { name: '$f_m$', definition: 'Frequency of the median class.' },
+                            {
+                                name: '$h$',
+                                definition: 'Class width of the median class.',
+                                logic: '$h = \\text{Upper Class Boundary} - \\text{Lower Class Boundary}$',
+                            },
+                        ],
+                    },
+                },
+                {
+                    pairName: 'Mode',
+                    ungrouped: {
+                        id: 'mode-ungrouped',
+                        name: 'Mode (Ungrouped Data)',
+                        formula: null,
+                        definition: 'The most frequently occurring value(s) in a dataset.',
+                        logic: `
+                        1. Identify the value(s) that appear most often.
+                        2. A dataset can have one mode (unimodal), multiple modes (multimodal), or no mode if all values occur with the same frequency.
+                        `,
+                        variables: [],
+                    },
+                    grouped: {
+                        id: 'mode-grouped',
+                        name: 'Mode (Grouped Data)',
+                        formula: '$$\\text{Mode} = L + \\frac{(f_1 - f_0)}{(2f_1 - f_0 - f_2)} \\times h$$',
+                        definition: 'Represents the most frequent value in data organized into frequency distributions.',
+                        variables: [
+                            { name: '$L$', definition: 'Lower limit of the modal class (the class with the highest frequency).' },
+                            { name: '$f_1$', definition: 'Frequency of the modal class.' },
+                            { name: '$f_0$', definition: 'Frequency of the class *preceding* the modal class.' },
+                            { name: '$f_2$', definition: 'Frequency of the class *succeeding* the modal class.' },
+                            { name: '$h$', definition: 'Class width of the modal class.' },
+                        ],
+                    },
+                },
+                {
+                    pairName: 'Standard Deviation',
+                    ungrouped: {
+                        id: 'std-dev-sample',
+                        name: 'Standard Deviation (Sample)',
+                        formula: '$$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$',
+                        definition: 'Measures the average amount of dispersion or spread of individual data points around the sample mean.',
+                        variables: [
+                            { name: '$x_i$', definition: 'Individual data points.' },
+                            {
+                                name: '$\\bar{x}$',
+                                definition: 'Sample mean.',
+                                subFormula: {
+                                    formula: '$$\\bar{x} = \\frac{\\sum x_i}{n}$$',
+                                    variables: [
+                                        { name: '$\\sum x_i$', definition: 'Sum of all individual observations.' },
+                                        { name: '$n$', definition: 'Total number of observations.' },
+                                    ],
+                                },
+                            },
+                            { name: '$\\sum (x_i - \\bar{x})^2$', definition: 'Sum of squared deviations from the mean.' },
+                            { name: '$n$', definition: 'Number of observations in the sample.' },
+                            { name: '$n - 1$', definition: 'Degrees of freedom.' },
+                        ],
+                    },
+                    grouped: {
+                        id: 'std-dev-population',
+                        name: 'Standard Deviation (Population)',
+                        formula: '$$\\sigma = \\sqrt{\\frac{\\sum (x_i - \\mu)^2}{N}}$$',
+                        definition: 'Measures the spread of data points around the population mean for the *entire* population.',
+                        variables: [
+                            { name: '$x_i$', definition: 'Individual data points.' },
+                            { name: '$\\mu$', definition: 'Population mean.' },
+                            { name: '$N$', definition: 'Total population size.' },
+                        ],
+                    },
+                },
+            ],
+        },
+        {
+            category: 'Standardization & Relative Position',
+            icon: '🎯',
+            description: 'These formulas allow us to understand the position of a single data point relative to the mean and standard deviation of its distribution.',
+            type: 'list',
+            items: [
+                {
+                    id: 'z-score',
+                    name: 'Z-Score (Standardized Score)',
+                    formula: '$$z = \\frac{x - \\mu}{\\sigma}$$',
+                    definition: 'Indicates how many standard deviations an individual data point is from the mean of its distribution.',
+                    variables: [
+                        { name: '$x$', definition: 'Individual data point or score.' },
+                        { name: '$\\mu$', definition: 'Population mean.' },
+                        { name: '$\\sigma$', definition: 'Population standard deviation.' },
+                    ],
+                },
+            ],
+        },
+        {
+            category: 'Measures of Relationship: Correlation',
+            icon: '🔗',
+            description: 'These formulas quantify the strength and direction of association between two variables.',
+            type: 'list',
+            items: [
+                {
+                    id: 'pearson-correlation',
+                    name: 'Pearson’s Correlation Coefficient (r)',
+                    formula: '$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}$$',
+                    definition: 'Measures the strength and direction of a *linear* relationship between two continuous variables.',
+                    variables: [
+                        { name: '$x_i, y_i$', definition: 'Individual data points for variables X and Y.' },
+                        {
+                            name: '$\\bar{x}$',
+                            definition: 'Mean of variable X.',
+                            subFormula: {
+                                formula: '$$\\bar{x} = \\frac{\\sum x_i}{n}$$',
+                                variables: [
+                                    { name: '$\\sum x_i$', definition: 'Sum of all individual observations.' },
+                                    { name: '$n$', definition: 'Total number of observations.' },
+                                ],
+                            },
+                        },
+                        {
+                            name: '$\\bar{y}$',
+                            definition: 'Mean of variable Y.',
+                            subFormula: {
+                                formula: '$$\\bar{y} = \\frac{\\sum y_i}{n}$$',
+                                variables: [
+                                    { name: '$\\sum y_i$', definition: 'Sum of all individual observations.' },
+                                    { name: '$n$', definition: 'Total number of observations.' },
+                                ],
+                            },
+                        },
+                        { name: '$\\sum (x_i - \\bar{x})(y_i - \\bar{y})$', definition: 'Sum of cross-products of deviations.' },
+                        { name: '$\\sum (x_i - \\bar{x})^2$', definition: 'Sum of squared deviations for X.' },
+                        { name: '$\\sum (y_i - \\bar{y})^2$', definition: 'Sum of squared deviations for Y.' },
+                    ],
+                },
+                {
+                    id: 'spearman-rho',
+                    name: 'Spearman’s Rank Correlation ($\\rho$)',
+                    formula: '$$\\rho = 1 - \\frac{6 \\sum d_i^2}{n(n^2 - 1)}$$',
+                    definition: 'Measures the strength and direction of a *monotonic* (consistently increasing or decreasing) relationship between two ranked variables or ordinal data.',
+                    variables: [
+                        {
+                            name: '$d_i$',
+                            definition: 'Difference between the ranks of corresponding observations.',
+                            logic: '$d_i = \\text{Rank}(x_i) - \\text{Rank}(y_i)$',
+                        },
+                        { name: '$n$', definition: 'Number of paired observations.' },
+                    ],
+                },
+                {
+                    id: 'spearman-rho-tied',
+                    name: 'Spearman’s Rho (Tied Ranks)',
+                    formula: '$$\\rho = 1 - \\frac{6 \\left( \\sum d_i^2 + \\frac{T_x + T_y}{12} \\right)}{n(n^2 - 1)}$$',
+                    definition: 'An adjustment to Spearman\'s Rank Correlation formula specifically for cases where there are tied ranks in the data, providing a more accurate measure of monotonic relationship.',
+                    variables: [
+                        {
+                            name: '$d_i$',
+                            definition: 'Difference between the ranks of corresponding observations ($d_i = \\text{Rank}(x_i) - \\text{Rank}(y_i)$).',
+                        },
+                        { name: '$n$', definition: 'Number of paired observations.' },
+                        {
+                            name: '$T_x, T_y$',
+                            definition: 'Tied rank correction factors for variable X and Y respectively.',
+                            subFormula: {
+                                formula: '$$T = \\sum \\frac{t(t^2 - 1)}{12}$$',
+                                variables: [
+                                    { name: '$t$', definition: 'Number of tied ranks in a group.' },
+                                ],
+                            },
+                        },
+                    ],
+                },
+                {
+                    id: 'kendall-tau',
+                    name: 'Kendall’s Tau ($\\tau$)',
+                    formula: '$$\\tau = \\frac{C - D}{\\frac{1}{2} n(n - 1)}$$',
+                    definition: 'A non-parametric measure of the strength of the relationship between two ranked variables, based on concordant and discordant pairs.',
+                    variables: [
+                        { name: '$C$', definition: 'Number of concordant pairs (pairs where the ranks of both variables are in the same order).' },
+                        { name: '$D$', definition: 'Number of discordant pairs (pairs where the ranks of the variables are in opposite order).' },
+                        { name: '$n$', definition: 'Total number of paired observations.' },
+                    ],
+                },
+                {
+                    id: 'partial-correlation',
+                    name: 'Partial Correlation (r_xy.z)',
+                    formula: '$$r_{xy.z} = \\frac{r_{xy} - r_{xz} r_{yz}}{\\sqrt{(1 - r_{xz}^2)(1 - r_{yz}^2)}}$$',
+                    definition: 'Measures the linear relationship between two variables (X and Y) after statistically controlling for the effect of a third variable (Z).',
+                    variables: [
+                        { name: '$r_{xy}$', definition: 'Pearson\'s correlation coefficient between X and Y.' },
+                        { name: '$r_{xz}$', definition: 'Pearson\'s correlation coefficient between X and Z.' },
+                        { name: '$r_{yz}$', definition: 'Pearson\'s correlation coefficient between Y and Z.' },
+                    ],
+                },
+                {
+                    id: 'point-biserial',
+                    name: 'Point-Biserial Correlation (r_pb)',
+                    formula: '$$r_{pb} = \\frac{\\bar{Y}_1 - \\bar{Y}_0}{s_Y} \\sqrt{\\frac{n_1 n_0}{n^2}}$$',
+                    definition: 'Measures the correlation between a binary (dichotomous) variable and a continuous variable.',
+                    variables: [
+                        { name: '$\\bar{Y}_1$', definition: 'Mean of the continuous variable (Y) for the group coded as 1 in the binary variable.' },
+                        { name: '$\\bar{Y}_0$', definition: 'Mean of the continuous variable (Y) for the group coded as 0 in the binary variable.' },
+                        {
+                            name: '$s_Y$',
+                            definition: 'Standard deviation of the continuous variable (Y) for the entire sample.',
+                            subFormula: {
+                                formula: '$$s_Y = \\sqrt{\\frac{\\sum (Y_i - \\bar{Y})^2}{n - 1}}$$',
+                                variables: [
+                                    { name: '$Y_i$', definition: 'Individual data points for Y.' },
+                                    { name: '$\\bar{Y}$', definition: 'Overall mean of Y.' },
+                                    { name: '$n$', definition: 'Total number of observations.' },
+                                ],
+                            },
+                        },
+                        { name: '$n_1$', definition: 'Number of observations in the group coded as 1.' },
+                        { name: '$n_0$', definition: 'Number of observations in the group coded as 0.' },
+                        { name: '$n$', definition: 'Total number of observations ($n = n_1 + n_0$).' },
+                    ],
+                },
+                {
+                    id: 'phi-coefficient',
+                    name: 'Phi Coefficient ($\\phi$)',
+                    formula: '$$\\phi = \\sqrt{\\frac{\\chi^2}{n}}$$',
+                    definition: 'Measures the strength of association between two binary (dichotomous) variables in a 2x2 contingency table.',
+                    variables: [
+                        {
+                            name: '$\\chi^2$',
+                            definition: 'Chi-square statistic from the 2x2 contingency table.',
+                            subFormula: {
+                                formula: '$$\\chi^2 = \\sum \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$',
+                                variables: [
+                                    { name: '$O_{ij}$', definition: 'Observed frequency in cell (i, j).' },
+                                    {
+                                        name: '$E_{ij}$',
+                                        definition: 'Expected frequency in cell (i, j) under the assumption of no association.',
+                                        subFormula: {
+                                            formula: '$$E_{ij} = \\frac{(\\text{Row Total} \\times \\text{Column Total})}{\\text{Grand Total}}$$',
+                                            variables: [
+                                                { name: 'Row Total', definition: 'Sum of frequencies in the row.' },
+                                                { name: 'Column Total', definition: 'Sum of frequencies in the column.' },
+                                                { name: 'Grand Total', definition: 'Total number of observations in the table.' },
+                                            ],
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                        { name: '$n$', definition: 'Total number of observations.' },
+                    ],
+                },
+            ],
+        },
+        {
+            category: 'Predictive Modeling: Regression',
+            icon: '🔮',
+            description: 'Regression moves beyond describing relationships to predicting the value of one variable based on another.',
+            type: 'list',
+            items: [
+                {
+                    id: 'simple-linear-regression',
+                    name: 'Simple Linear Regression Equation',
+                    formula: '$$y = a + bx$$',
+                    definition: 'Predicts the value of a dependent variable (y) based on the value of a single independent variable (x) assuming a linear relationship.',
+                    variables: [
+                        { name: '$y$', definition: 'Predicted value of the dependent variable.' },
+                        { name: '$x$', definition: 'Value of the independent variable.' },
+                        {
+                            name: '$b$',
+                            definition: 'Slope of the regression line (change in y for a one-unit change in x).',
+                            subFormula: {
+                                formula: '$$b = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum (x_i - \\bar{x})^2}$$',
+                                variables: [
+                                    { name: '$x_i, y_i$', definition: 'Individual data points for X and Y.' },
+                                    { name: '$\\bar{x}$', definition: 'Mean of X.' },
+                                    { name: '$\\bar{y}$', definition: 'Mean of Y.' },
+                                    { name: '$\\sum (x_i - \\bar{x})(y_i - \\bar{y})$', definition: 'Sum of cross-products of deviations.' },
+                                    { name: '$\\sum (x_i - \\bar{x})^2$', definition: 'Sum of squared deviations for X.' },
+                                ],
+                            },
+                        },
+                        {
+                            name: '$a$',
+                            definition: 'Y-intercept of the regression line (predicted value of y when x=0).',
+                            subFormula: {
+                                formula: '$$a = \\bar{y} - b\\bar{x}$$',
+                                variables: [
+                                    { name: '$\\bar{y}$', definition: 'Mean of Y.' },
+                                    { name: '$b$', definition: 'Slope of the regression line.' },
+                                    { name: '$\\bar{x}$', definition: 'Mean of X.' },
+                                ],
+                            },
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            category: 'Hypothesis Testing: Comparing Groups & Associations',
+            icon: '🧪',
+            description: 'These powerful tools allow us to make inferences about populations based on sample data, testing hypotheses about differences between group means or associations between variables.',
+            type: 'list',
+            items: [
+                {
+                    id: 'independent-t-test',
+                    name: 'Independent Samples t-Test',
+                    formula: '$$t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$',
+                    definition: 'Compares the means of two independent groups to determine if there\'s a statistically significant difference between them.',
+                    variables: [
+                        { name: '$\\bar{x}_1, \\bar{x}_2$', definition: 'Means of sample 1 and sample 2, respectively.' },
+                        {
+                            name: '$s_1^2, s_2^2$',
+                            definition: 'Variances of sample 1 and sample 2, respectively.',
+                            subFormula: {
+                                formula: '$$s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$$',
+                                variables: [
+                                    { name: '$x_i$', definition: 'Individual data points.' },
+                                    { name: '$\\bar{x}$', definition: 'Sample mean.' },
+                                    { name: '$n$', definition: 'Number of observations.' },
+                                ],
+                            },
+                        },
+                        { name: '$n_1, n_2$', definition: 'Sample sizes of group 1 and group 2, respectively.' },
+                    ],
+                },
+                {
+                    id: 'one-way-anova',
+                    name: 'One-Way ANOVA (F-Ratio)',
+                    formula: '$$F = \\frac{SSB / (k - 1)}{SSW / (N - k)}$$',
+                    definition: 'Compares the means of three or more independent groups to determine if at least one group mean is significantly different from the others.',
+                    variables: [
+                        {
+                            name: '$SSB$',
+                            definition: 'Sum of Squares Between groups (measures variation explained by group differences).',
+                            subFormula: {
+                                formula: '$$SSB = \\sum n_i (\\bar{x}_i - \\bar{x}_{\\text{grand}})^2$$',
+                                variables: [
+                                    { name: '$n_i$', definition: 'Sample size of group i.' },
+                                    { name: '$\\bar{x}_i$', definition: 'Mean of group i.' },
+                                    { name: '$\\bar{x}_{\\text{grand}}$', definition: 'Grand mean of all observations.' },
+                                ],
+                            },
+                        },
+                        {
+                            name: '$SSW$',
+                            definition: 'Sum of Squares Within groups (measures unexplained variation within groups).',
+                            subFormula: {
+                                formula: '$$SSW = \\sum (x_{ij} - \\bar{x}_i)^2$$',
+                                variables: [
+                                    { name: '$x_{ij}$', definition: 'Individual observation j in group i.' },
+                                    { name: '$\\bar{x}_i$', definition: 'Mean of group i.' },
+                                ],
+                            },
+                        },
+                        { name: '$k$', definition: 'Number of groups.' },
+                        {
+                            name: '$N$',
+                            definition: 'Total number of observations across all groups.',
+                            logic: '$N = \\sum n_i$',
+                        },
+                    ],
+                },
+                {
+                    id: 'chi-square',
+                    name: 'Chi-Square Test of Independence ($\\chi^2$)',
+                    formula: '$$\\chi^2 = \\sum \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$',
+                    definition: 'Tests for a statistically significant association between two categorical variables, or whether observed frequencies differ from expected frequencies.',
+                    variables: [
+                        { name: '$O_{ij}$', definition: 'Observed frequency in cell (row i, column j) of the contingency table.' },
+                        {
+                            name: '$E_{ij}$',
+                            definition: 'Expected frequency in cell (row i, column j) under the assumption of no association.',
+                            subFormula: {
+                                formula: '$$E_{ij} = \\frac{(\\text{Row Total} \\times \\text{Column Total})}{\\text{Grand Total}}$$',
+                                variables: [
+                                    { name: 'Row Total', definition: 'Sum of frequencies in the row.' },
+                                    { name: 'Column Total', definition: 'Sum of frequencies in the column.' },
+                                    { name: 'Grand Total', definition: 'Total number of observations in the table.' },
+                                ],
+                            },
+                        },
+                        {
+                            name: '$df$',
+                            definition: 'Degrees of freedom.',
+                            logic: '$df = (r - 1)(c - 1)$, where $r$ is number of rows and $c$ is number of columns.',
+                        },
+                    ],
+                },
+                {
+                    id: 'mann-whitney-u',
+                    name: 'Mann-Whitney U Test',
+                    formula: '$$U_1 = n_1 n_2 + \\frac{n_1(n_1 + 1)}{2} - R_1 \\\\ U_2 = n_1 n_2 - U_1$$',
+                    definition: 'A non-parametric test used to compare the distributions of two independent groups, often as an alternative to the independent samples t-test when assumptions are violated.',
+                    variables: [
+                        { name: '$n_1, n_2$', definition: 'Sample sizes of Group 1 and Group 2, respectively.' },
+                        { name: '$R_1$', definition: 'Sum of ranks for Group 1 (when all observations from both groups are combined and ranked).' },
+                        { name: 'Test Statistic', definition: 'The smaller of $U_1$ and $U_2$ is typically used as the test statistic.' },
+                    ],
+                },
+                {
+                    id: 'kruskal-wallis-h',
+                    name: 'Kruskal-Wallis H Test',
+                    formula: '$$H = \\frac{12}{N(N + 1)} \\sum \\frac{R_i^2}{n_i} - 3(N + 1)$$',
+                    definition: 'A non-parametric alternative to one-way ANOVA, used to compare the distributions of three or more independent groups when parametric assumptions are not met.',
+                    variables: [
+                        { name: '$N$', definition: 'Total number of observations across all groups.' },
+                        { name: '$R_i$', definition: 'Sum of ranks for group i (when all observations from all groups are combined and ranked).' },
+                        { name: '$n_i$', definition: 'Size of group i.' },
+                    ],
+                },
+                {
+                    id: 'wilcoxon-signed-rank',
+                    name: 'Wilcoxon Signed-Rank Test (Logic & Steps)',
+                    formula: null,
+                    definition: 'A non-parametric test used for paired or matched data, assessing if there is a significant difference between two related samples. It\'s an alternative to the paired samples t-test.',
+                    logic: `
+                    1. **Calculate Differences ($d_i$)**: Find the difference between paired observations for each subject ($d_i = \\text{Score}_1 - \\text{Score}_2$).
+                    2. **Rank Absolute Differences**: Rank the absolute values ($|d_i|$) of only the non-zero differences from smallest to largest. Assign average ranks to tied absolute differences.
+                    3. **Assign Signs to Ranks**: Apply the original sign (+ or -) of the difference ($d_i$) to its corresponding rank.
+                    4. **Sum Positive and Negative Ranks**: Calculate the sum of the ranks with positive signs ($\\sum R_+$) and the sum of the ranks with negative signs ($\\sum R_-$).
+                    5. **Determine Test Statistic (T)**: The Wilcoxon T statistic is the smaller of $|\\sum R_+|$ and $|\\sum R_-|$.
+                    `,
+                    variables: [],
+                },
+            ],
+        },
+        {
+            category: 'Inference & Error Quantification',
+            icon: '📈',
+            description: 'These concepts help in understanding the reliability of estimates and the potential for error in statistical conclusions.',
+            type: 'list',
+            items: [
+                {
+                    id: 'sem',
+                    name: 'Standard Error of the Mean (SEM)',
+                    formula: '$$SEM = \\frac{s}{\\sqrt{n}}$$',
+                    definition: 'Estimates the variability among sample means if multiple samples were drawn from the same population. It indicates the precision of the sample mean as an estimate of the population mean.',
+                    variables: [
+                        {
+                            name: '$s$',
+                            definition: 'Sample standard deviation.',
+                            subFormula: {
+                                formula: '$$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$',
+                                variables: [
+                                    { name: '$x_i$', definition: 'Individual data points.' },
+                                    { name: '$\\bar{x}$', definition: 'Sample mean.' },
+                                    { name: '$n$', definition: 'Number of observations.' },
+                                ],
+                            },
+                        },
+                        { name: '$n$', definition: 'Sample size.' },
+                    ],
+                },
+                {
+                    id: 'confidence-interval',
+                    name: 'Confidence Interval (Mean)',
+                    formula: '$$CI = \\bar{x} \\pm z_{\\alpha/2} \\cdot \\frac{s}{\\sqrt{n}}$$',
+                    definition: 'Provides a range within which the true population mean is likely to fall, with a specified level of confidence (e.g., 95%).',
+                    variables: [
+                        { name: '$\\bar{x}$', definition: 'Sample mean.' },
+                        { name: '$z_{\\alpha/2}$', definition: 'Critical z-value corresponding to the desired confidence level (e.g., 1.96 for 95% CI).' },
+                        { name: '$s$', definition: 'Sample standard deviation.' },
+                        { name: '$n$', definition: 'Sample size.' },
+                        { name: '$\\frac{s}{\\sqrt{n}}$', definition: 'This entire term represents the Standard Error of the Mean (SEM).' },
+                    ],
+                },
+                {
+                    id: 'hypothesis-errors',
+                    name: 'Hypothesis Testing Errors (Conceptual)',
+                    formula: null,
+                    definition: 'The potential mistakes made when deciding whether to reject or fail to reject a null hypothesis.',
+                    logic: `
+                    * **Type I Error ($\\alpha$)**: Rejecting a true null hypothesis (false positive). The probability of a Type I error is set by the significance level ($\\alpha$).
+                    * **Type II Error ($\\beta$)**: Failing to reject a false null hypothesis (false negative).
+                    * **Power of a Test**: The probability of correctly rejecting a false null hypothesis ($1 - \\beta$).
+                    `,
+                    variables: [],
+                },
+                {
+                    id: 'level-of-significance',
+                    name: 'Level of Significance ($\\alpha$) (Conceptual)',
+                    formula: null,
+                    definition: 'The probability of making a Type I error (incorrectly rejecting a true null hypothesis). It\'s a threshold used to decide whether the observed data is statistically significant. Common values are 0.05 or 0.01.',
+                    logic: 'If the calculated p-value from a test is less than or equal to $\\alpha$, the null hypothesis is rejected.',
+                    variables: [],
+                },
+                {
+                    id: 'critical-value-rule',
+                    name: 'Critical Value Comparison Rule (Conceptual)',
+                    formula: null,
+                    definition: 'A general rule for making decisions in hypothesis testing by comparing a calculated test statistic to a pre-determined critical value from a statistical table.',
+                    logic: `
+                    * **If Calculated Test Statistic > Critical Value**: Reject the Null Hypothesis ($H_0$). This indicates the observed effect is statistically significant.
+                    * **If Calculated Test Statistic $\\le$ Critical Value**: Fail to Reject the Null Hypothesis ($H_0$). This indicates the observed effect is not statistically significant.
+                    `,
+                    variables: [],
+                },
+            ],
+        },
+    ];
+
+    // --- MathJax Queue and Processing ---
+    const mathJaxQueue = [];
+    let isProcessingQueue = false;
+
+    async function processMathJaxQueue() {
+        if (isProcessingQueue || mathJaxQueue.length === 0) {
+            return;
+        }
+
+        isProcessingQueue = true;
+        while (mathJaxQueue.length > 0) {
+            const element = mathJaxQueue.shift(); // Get element from front of queue
+
+            if (!element) {
+                console.warn("Attempted to process null element from MathJax queue.");
+                continue;
+            }
+
+            // Ensure MathJax is fully loaded and typesetPromise is available
+            if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') {
+                console.warn("MathJax.typesetPromise not yet available during queue processing. Re-queueing element.");
+                mathJaxQueue.push(element); // Re-queue if MathJax isn't ready
+                isProcessingQueue = false;
+                return; // Stop processing and wait for next interval
+            }
+
+            try {
+                const originalLatex = element.dataset.latex;
+                if (originalLatex) {
+                    element.textContent = originalLatex; // Crucial: Reset content to raw LaTeX
+                } else {
+                    // If no data-latex, and element already has content, it might be pre-processed HTML.
+                    // For safety, only process elements with data-latex or those specifically known to be raw.
+                    // console.warn("Element has no data-latex attribute, skipping direct textContent reset or assuming pre-processed:", element);
+                }
+
+                // Delay for DOM painting, then typeset
+                await new Promise(resolve => setTimeout(resolve, 10)); // Small delay
+                await window.MathJax.typesetPromise([element]);
+                // console.log('MathJax typeset successfully for element:', element);
+            } catch (err) {
+                console.error("MathJax typesetting error for element:", element, err);
+            }
+        }
+        isProcessingQueue = false;
+    }
+
+    // Start polling the queue at a regular interval
+    setInterval(processMathJaxQueue, 100); // Check every 100ms
+
+    // --- Function to add elements to MathJax Queue ---
+    function queueForMathJax(element) {
+        if (element && element.dataset.latex) { // Only queue elements that have raw LaTeX to process
+            mathJaxQueue.push(element);
+        } else if (element) {
+            // For elements without data-latex, but containing other MathJax elements (e.g., a tooltip div)
+            // Find all math-display/math-inline children that have data-latex and queue them
+            element.querySelectorAll('.math-display[data-latex], .math-inline[data-latex]').forEach(child => {
+                mathJaxQueue.push(child);
+            });
+        }
+    }
+
+
+    // --- Function to create a formula card element ---
+    function createFormulaCard(formulaItem, cardTypeClass, pairRowElement) {
+        const cardWrapper = document.createElement('div');
+        cardWrapper.className = `card-wrapper flex flex-col p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer relative overflow-hidden ${cardTypeClass}`;
+        cardWrapper.dataset.cardId = formulaItem.id; // Store ID for easy lookup
+
+        // Card header (always visible part)
+        const cardHeader = document.createElement('div');
+        cardHeader.className = "flex-grow";
+        cardHeader.innerHTML = `
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">${formulaItem.name}</h3>
+            <p class="text-sm text-gray-600 mb-2">${formulaItem.definition}</p>
+        `;
+        cardWrapper.appendChild(cardHeader);
+
+        // Initial formula display (visible when card is NOT expanded)
+        if (formulaItem.formula) {
+            const initialFormulaDiv = document.createElement('div');
+            initialFormulaDiv.className = "math-display my-2 p-2 bg-gray-50 rounded";
+            initialFormulaDiv.dataset.latex = formulaItem.formula; // Store raw LaTeX
+            initialFormulaDiv.textContent = formulaItem.formula; // Set raw LaTeX initially
+            cardHeader.appendChild(initialFormulaDiv);
+            // Queue for initial render
+            queueForMathJax(initialFormulaDiv);
+        }
+
+        // Collapsible content (hidden by default, will expand with CSS)
+        const collapsibleContent = document.createElement('div');
+        collapsibleContent.className = "collapsible-content mt-4 border-gray-200"; // Apply transition class
+        collapsibleContent.dataset.expanded = "false"; // Custom attribute for state
+        cardWrapper.appendChild(collapsibleContent); // Append now
+
+        // Build content for the collapsible section, then append to collapsibleContent
+        const fullContentContainer = document.createElement('div');
+        fullContentContainer.className = "space-y-4"; // Add some spacing for content within expanded card
+
+        if (formulaItem.formula) {
+            const formulaTitle = document.createElement('p');
+            formulaTitle.className = "font-medium text-gray-700 mb-1";
+            formulaTitle.textContent = "Formula:";
+            fullContentContainer.appendChild(formulaTitle);
+
+            const formulaDisplayDiv = document.createElement('div');
+            formulaDisplayDiv.className = "math-display my-2 p-2 bg-gray-50 rounded-md text-xl";
+            formulaDisplayDiv.dataset.latex = formulaItem.formula; // Store raw LaTeX
+            formulaDisplayDiv.textContent = formulaItem.formula; // Set raw LaTeX
+            fullContentContainer.appendChild(formulaDisplayDiv);
+        }
+        if (formulaItem.logic) {
+            const logicTitle = document.createElement('p');
+            logicTitle.className = "font-medium text-gray-700 mt-3 mb-1";
+            logicTitle.textContent = "Logic/Steps:";
+            fullContentContainer.appendChild(logicTitle);
+
+            const logicDisplayDiv = document.createElement('div');
+            const logicSpan = document.createElement('span');
+            logicSpan.className = "math-inline";
+            logicSpan.dataset.latex = formulaItem.logic; // Store raw LaTeX
+            logicSpan.textContent = formulaItem.logic; // Set raw LaTeX
+            logicDisplayDiv.appendChild(logicSpan);
+            fullContentContainer.appendChild(logicDisplayDiv);
+        }
+        if (formulaItem.variables && formulaItem.variables.length > 0) {
+            const variablesTitle = document.createElement('p');
+            variablesTitle.textContent = "Variables & Sub-formulas:";
+            fullContentContainer.appendChild(variablesTitle);
+
+            const variablesList = document.createElement('ul');
+            variablesList.className = "list-disc pl-5 space-y-2";
+            formulaItem.variables.forEach(variable => {
+                variablesList.appendChild(createVariableListItem(variable));
+            });
+            fullContentContainer.appendChild(variablesList);
+        }
+        collapsibleContent.appendChild(fullContentContainer); // Append all dynamically created content
+
+
+        // Attach click listener to toggle expansion
+        cardHeader.addEventListener('click', () => {
+            const isExpanded = collapsibleContent.dataset.expanded === "true";
+            // Hide all other tooltips first
+            document.querySelectorAll('.tooltip-floater.show').forEach(t => t.classList.remove('show'));
+
+            if (isExpanded) {
+                collapsibleContent.classList.remove('expanded');
+                collapsibleContent.dataset.expanded = "false";
+                cardWrapper.classList.remove('expanded-active');
+                // Find and restore sibling cards if within a pair
+                if (pairRowElement) {
+                    pairRowElement.classList.remove('expanded-row'); // Remove expanded-row class
+                    Array.from(pairRowElement.children).forEach(siblingWrapper => {
+                        if (siblingWrapper !== cardWrapper) {
+                            siblingWrapper.classList.remove('expanded-sibling');
+                        }
+                    });
+                }
+            } else {
+                // Collapse all currently expanded cards in the entire document
+                document.querySelectorAll('.collapsible-content.expanded').forEach(content => {
+                    content.classList.remove('expanded');
+                    content.dataset.expanded = "false";
+                    // Also remove active/sibling classes from their wrappers
+                    const wrapper = content.closest('.card-wrapper');
+                    if (wrapper) {
+                        wrapper.classList.remove('expanded-active');
+                        wrapper.classList.remove('expanded-sibling'); // Ensure siblings are also reset
+                        const parentRow = wrapper.closest('.pair-row-container');
+                        if (parentRow) parentRow.classList.remove('expanded-row');
+                    }
+                });
+                // And hide all tooltips from previously expanded cards
+                document.querySelectorAll('.tooltip-floater.show').forEach(t => t.classList.remove('show'));
+
+
+                collapsibleContent.classList.add('expanded');
+                collapsibleContent.dataset.expanded = "true";
+                cardWrapper.classList.add('expanded-active');
+
+                // If within a pair, hide or shrink sibling
+                if (pairRowElement) {
+                    pairRowElement.classList.add('expanded-row'); // Add expanded-row class to parent
+                    Array.from(pairRowElement.children).forEach(siblingWrapper => {
+                        if (siblingWrapper !== cardWrapper) {
+                            siblingWrapper.classList.add('expanded-sibling');
+                        }
+                    });
+                }
+
+                // Queue expanded content for MathJax rendering
+                queueForMathJax(collapsibleContent);
+            }
+        });
+
+        return cardWrapper;
+    }
+
+    // --- Function to create a variable list item with tooltip ---
+    function createVariableListItem(variable) {
+        const li = document.createElement('li');
+        li.className = "relative"; // Tailwind 'relative' for absolute tooltip positioning
+
+        const varNameSpan = document.createElement('span');
+        varNameSpan.className = `font-mono inline-block ${variable.subFormula || variable.logic ? 'text-blue-600 cursor-pointer hover:underline' : ''}`;
+        varNameSpan.dataset.latex = `${variable.name}:`; // Store raw LaTeX
+        varNameSpan.textContent = `${variable.name}:`; // Set raw LaTeX initially
+        li.appendChild(varNameSpan);
+        // Queue for MathJax rendering
+        queueForMathJax(varNameSpan);
+
+        const definitionText = document.createTextNode(` ${variable.definition}`);
+        li.appendChild(definitionText);
+
+        if (variable.subFormula || variable.logic) {
+            const tooltip = document.createElement('div');
+            tooltip.className = "tooltip-floater"; // Hidden by default, "show" class will reveal
+            li.appendChild(tooltip); // Append tooltip to li immediately
+
+            let tooltipContentContainer = document.createElement('div');
+            tooltipContentContainer.className = "space-y-2"; // Add spacing inside tooltip
+
+            if (variable.subFormula) {
+                const subFormulaTitle = document.createElement('p');
+                subFormulaTitle.className = "font-semibold text-emerald-800 mb-1";
+                subFormulaTitle.textContent = `Sub-formula for ${variable.name}:`;
+                tooltipContentContainer.appendChild(subFormulaTitle);
+
+                const subFormulaDisplayDiv = document.createElement('div');
+                subFormulaDisplayDiv.className = "math-display my-1 text-base";
+                subFormulaDisplayDiv.dataset.latex = variable.subFormula.formula; // Store raw LaTeX
+                subFormulaDisplayDiv.textContent = variable.subFormula.formula; // Set raw LaTeX initially
+                tooltipContentContainer.appendChild(subFormulaDisplayDiv);
+            } else if (variable.logic) {
+                const logicTitle = document.createElement('p');
+                logicTitle.className = "font-semibold text-emerald-800 mb-1";
+                logicTitle.textContent = `Logic for ${variable.name}:`;
+                tooltipContentContainer.appendChild(logicTitle);
+
+                const logicDisplayDiv = document.createElement('div');
+                const logicSpan = document.createElement('span');
+                logicSpan.className = "math-inline";
+                logicSpan.dataset.latex = variable.logic; // Store raw LaTeX
+                logicSpan.textContent = variable.logic; // Set raw LaTeX initially
+                logicDisplayDiv.appendChild(logicSpan);
+                tooltipContentContainer.appendChild(logicDisplayDiv);
+            }
+            tooltip.appendChild(tooltipContentContainer); // Append all content to tooltip
+
+
+            varNameSpan.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent card from collapsing
+                // Hide all other tooltips first
+                document.querySelectorAll('.tooltip-floater.show').forEach(t => {
+                    if (t !== tooltip) t.classList.remove('show');
+                });
+
+                // Toggle visibility of THIS tooltip
+                if (tooltip.classList.contains('show')) {
+                    tooltip.classList.remove('show');
+                } else {
+                    tooltip.classList.add('show');
+                    // Queue tooltip content for MathJax rendering
+                    queueForMathJax(tooltip);
+                }
+            });
+
+            // Close tooltip when clicking anywhere else on the document, but not on the span or the tooltip itself
+            document.addEventListener('click', (event) => {
+                if (tooltip.classList.contains('show') && !li.contains(event.target)) {
+                    tooltip.classList.remove('show');
+                }
+            });
+        }
+
+        return li; // Return the actual li element
+    }
+
+    // --- Main function to load all formulas into the DOM ---
+    function loadFormulas() {
+        const container = document.getElementById('formulas-container');
+        container.innerHTML = ''; // Clear previous content if any
+
+        formulasData.forEach(categoryGroup => {
+            const section = document.createElement('section');
+            section.className = "mb-12";
+            section.innerHTML = `
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-3 flex items-center">
+                    ${categoryGroup.icon ? `<span class="mr-2">${categoryGroup.icon}</span>` : ''}
+                    ${categoryGroup.category}
+                </h2>
+                <p class="text-gray-700 mb-8 max-w-3xl leading-relaxed">${categoryGroup.description}</p>
+            `;
+
+            if (categoryGroup.type === 'side-by-side') {
+                const sideBySideWrapper = document.createElement('div');
+                sideBySideWrapper.className = "flex flex-col space-y-6"; // Use flex-col for stacking rows of pairs
+
+                categoryGroup.items.forEach(pair => {
+                    const pairRow = document.createElement('div');
+                    pairRow.className = "pair-row-container"; // Use the new container class
+                    pairRow.dataset.pairName = pair.pairName; // Identify the pair row
+
+                    // Ungrouped Card
+                    const ungroupedCard = createFormulaCard(pair.ungrouped, 'ungrouped-card-bg', pairRow);
+                    pairRow.appendChild(ungroupedCard);
+
+                    // Grouped Card
+                    const groupedCard = createFormulaCard(pair.grouped, 'grouped-card-bg', pairRow);
+                    pairRow.appendChild(groupedCard);
+
+                    sideBySideWrapper.appendChild(pairRow);
+                });
+                section.appendChild(sideBySideWrapper);
+
+            } else {
+                const gridContainer = document.createElement('div');
+                gridContainer.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6";
+                categoryGroup.items.forEach(formula => {
+                    const card = createFormulaCard(formula, 'default-card-bg'); // No pairRow for single cards
+                    gridContainer.appendChild(card);
+                });
+                section.appendChild(gridContainer);
+            }
+            container.appendChild(section);
+        });
+
+        // Initial queue for all visible MathJax elements after DOM is built
+        setTimeout(() => {
+            document.querySelectorAll('.math-display[data-latex], .math-inline[data-latex]').forEach(el => {
+                // Check if the element is currently visible in the DOM
+                if (el.offsetParent !== null) {
+                    queueForMathJax(el);
+                }
+            });
+        }, 100);
+    }
+
+    // --- Event Listener for DOMContentLoaded ---
+    document.addEventListener('DOMContentLoaded', () => {
+        loadFormulas();
+    });
+
+    // MathJax Startup Promise - not used for direct typesetting, but for initial readiness check.
+    // The queue will handle subsequent typesettings.
+    if (window.MathJax) {
+        window.MathJax.startup.promise.then(() => {
+            console.log('MathJax startup promise resolved.');
+            // At this point, MathJax core is ready. The queue will then start processing.
+        });
+    }
+  </script>
+</body>
+</html>
