@@ -2,8 +2,13 @@
 <div align="center">  
   <img src="logo.png" alt="IGNOU Logo" width="150" />  
 </div>  
-<h2>📚 A collection of educational resources for IGNOU's Master of Arts in Psychology (MAPC) program.</h2>
+<h2>📚 Educational resources for IGNOU's Master of Arts in Psychology (MAPC) program.</h2>
 <h4 align="center"><i>Offline-Ready Interactive Solved Previous Year Question Papers for MPC-001 to MPC-006</i></h4> 
+<div align="center">
+  <a href="https://mohdusaid.github.io/IGNOU-MAPC/"  target="_blank">
+    <img src="https://img.shields.io/badge/Open-Website-blueviolet?style=for-the-badge&logo=github" alt="Open Website">
+  </a>
+</div>
 <br><div align="center"><sup>🧠 Psychological Wizardry Powered by HTML/CSS</sup></div>
 
 
@@ -85,8 +90,7 @@ pie
 ### 🖥 Open in Browser 
 Navigate [to this webpage](https://mohdusaid.github.io/IGNOU-MAPC/)  
 ```bash
-# Double-click any HTML file
-# Or use VS Code Live Server
+https://mohdusaid.github.io/IGNOU-MAPC/
 ```
 
 ---
